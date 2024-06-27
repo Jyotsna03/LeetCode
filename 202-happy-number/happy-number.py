@@ -1,12 +1,11 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
         def sqnum(n):
-            temp=n
             sum=0
-            while temp>0:
-                    rem=temp%10
+            while n>0:
+                    rem=n%10
                     sum+=rem**2
-                    temp=temp//10
+                    n=n//10
             return sum
         
         for i in range(100):
