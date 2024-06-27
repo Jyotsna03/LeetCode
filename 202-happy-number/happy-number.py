@@ -1,18 +1,8 @@
 class Solution:
-    def isHappy(self, n: int) -> bool:
-        def sqnum(n):
-            temp=n
-            sum=0
-            while temp>0:
-                    rem=temp%10
-                    sum+=rem**2
-                    temp=temp//10
-            return sum
-        
-        for i in range(100):
-            n = sqnum(n)
-            if n==1:
-                return True
-        else:
-            return False
+    def isHappy(self, temp: int) -> bool:
+        seen=set() 
+        while(temp!= 1  and temp not in seen ):
+            seen.add(temp)
+            temp=sum(int(i)**2 for i in str(temp))
+        return True if temp==1   else False
         
