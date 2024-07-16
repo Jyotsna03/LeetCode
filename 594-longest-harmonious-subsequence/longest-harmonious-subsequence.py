@@ -4,12 +4,12 @@ class Solution:
     def findLHS(self, nums: List[int]) -> int:
         nums.sort()
         longest = 0
-        res = 0
+        start = 0
         
-        for i in range(len(nums) - 1):
-            if nums[i + 1] - nums[i] == 1:
-                count = nums.count(nums[i]) + nums.count(nums[i + 1])
-                res = max(res, count)
+        for end in range(len(nums)):
+            while nums[end] - nums[start] > 1:
+                start += 1
+            if nums[end] - nums[start] == 1:
+                longest = max(longest, end - start + 1)
         
-        return res
-
+        return longest
