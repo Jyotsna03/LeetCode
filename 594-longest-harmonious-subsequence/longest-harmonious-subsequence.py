@@ -6,10 +6,10 @@ class Solution:
         longest = 0
         start = 0
         
-        for end in range(len(nums)):
-            while nums[end] - nums[start] > 1:
+        for i in range(len(nums)):
+            while nums[i] - nums[start] > 1:
                 start += 1
-            if nums[end] - nums[start] == 1:
-                longest = max(longest, end - start + 1)
+            if nums[i] - nums[start] == 1:
+                longest = max(longest, i - start + 1)
         
         return longest
