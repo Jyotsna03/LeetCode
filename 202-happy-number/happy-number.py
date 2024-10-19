@@ -7,11 +7,13 @@ class Solution:
                     sum+=rem**2
                     n=n//10
             return sum
-        
-        for i in range(100):
-            n = sqnum(n)
-            if n==1:
-                return True
-        else:
-            return False
+        slow = n
+        fast = sqnum(n)
+
+        # Use two pointers to detect cycles
+        while fast != 1 and slow != fast:
+            slow = sqnum(slow)               # Move slow by 1 step
+            fast = sqnum(sqnum(fast))        # Move fast by 2 steps
+
+        return fast == 1  # If fast reaches 1, the number is happy
         
